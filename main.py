@@ -38,10 +38,14 @@ def main():
         for i in updatable:
             i.update(dt)
         
-        for i in asteroids:
-            if i.check_collision(p1):
+        for a in asteroids:
+            if a.check_collision(p1):
                 print("Game over!")
                 exit()
+            for s in shots:
+                if s.check_collision(a):
+                    s.kill()
+                    a.split()
 
         screen.fill("black")
 
